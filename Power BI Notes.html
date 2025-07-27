@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI Complete Study Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .nav a:hover {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section h3 {
+            color: #4a5568;
+            font-size: 1.8rem;
+            margin: 25px 0 15px 0;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+        }
+
+        .section h4 {
+            color: #2d3748;
+            font-size: 1.3rem;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .card {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            background: rgba(102, 126, 234, 0.15);
+            transform: translateX(5px);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .grid-item {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .grid-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .table tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 2px;
+        }
+
+        .workflow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .workflow-item {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            position: relative;
+        }
+
+        .workflow-item:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #667eea;
+        }
+
+        .comparison {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-item {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .comparison-item:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+        }
+
+        .comparison-item h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .tooltip {
+            position: relative;
+            cursor: help;
+        }
+
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2d3748;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            z-index: 1000;
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .workflow {
+                flex-direction: column;
+            }
+
+            .workflow-item:not(:last-child)::after {
+                content: '↓';
+                right: 50%;
+                bottom: -15px;
+                top: auto;
+            }
+
+            .comparison {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Power BI Complete Study Guide</h1>
+            <p>Master Business Intelligence & Data Analytics</p>
+        </div>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="#prerequisites">Prerequisites</a></li>
+                <li><a href="#fundamentals">Fundamentals</a></li>
+                <li><a href="#data-formats">Data Formats</a></li>
+                <li><a href="#roles">Data Roles</a></li>
+                <li><a href="#analysis-types">Analysis Types</a></li>
+                <li><a href="#modeling">Data Modeling</a></li>
+                <li><a href="#dax">DAX</a></li>
+                <li><a href="#reports">Reports</a></li>
+                <li><a href="#workspace">Workspace</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+        </nav>
+
+        <section id="prerequisites" class="section">
+            <h2>Prerequisites to Learn Power BI</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>📊 Basic Data Analytics Knowledge</h4>
+                    <p>Understanding data collection, cleaning, and transformation processes.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>📈 Microsoft Excel</h4>
+                    <p>Working knowledge of spreadsheets and Excel formulas.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>💼 Business Analytics Basics</h4>
+                    <p>Understanding data-driven decision making and business strategy.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🗃️ SQL Knowledge</h4>
+                    <p>Mastering SQL basics: syntax, filtering, sorting, grouping, and subqueries.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="fundamentals" class="section">
+            <h2>Power BI Fundamentals</h2>
+            <div class="card">
+                <h3>What is Power BI?</h3>
+                <p>Power BI is a <span class="highlight">self-service, cloud-based business intelligence tool</span> from Microsoft that provides interactive visualizations and business intelligence capabilities with an interface simple enough for end users to create their own reports and dashboards.</p>
+            </div>
+
+            <div class="card">
+                <h3>Data Analysis</h3>
+                <p><strong>Data Analysis</strong> is telling a story with the data. It's a process of <span class="highlight">identifying, cleaning, transforming, and modeling data</span> to discover meaningful information.</p>
+            </div>
+
+            <h3>Power BI Tools</h3>
+            <div class="workflow">
+                <div class="workflow-item">Power BI Desktop</div>
+                <div class="workflow-item">Power BI Service</div>
+                <div class="workflow-item">Power BI Mobile</div>
+            </div>
+
+            <h3>Building Blocks of Power BI</h3>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>📊 Datasets</h4>
+                    <p>Collection of data from one or more sources that are cleansed, transformed, and modeled.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>📈 Visualizations</h4>
+                    <p>Visual representation of data, such as charts or color-coded maps.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>📋 Reports</h4>
+                    <p>Collection of visualizations on one or more pages.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>📱 Dashboards</h4>
+                    <p>Collection of visuals on a single page that you can share with others.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🔲 Tiles</h4>
+                    <p>Single visualization on a dashboard that can be embedded in Apps.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="data-formats" class="section">
+            <h2>Data Formats & Storage</h2>
+            
+            <div class="comparison">
+                <div class="comparison-item">
+                    <div class="icon">🗄️</div>
+                    <h4>Database</h4>
+                    <p>Well-organized filing cabinet for storing data. Designed to record and manage data for specific tasks. Optimized for fast queries and transaction processing.</p>
+                </div>
+                <div class="comparison-item">
+                    <div class="icon">🏛️</div>
+                    <h4>Data Warehouse</h4>
+                    <p>Historical archive storing data from multiple sources over time. Purpose is to analyze and gain insights from historical data. Optimized for analytical processing.</p>
+                </div>
+            </div>
+
+            <h3>Types of Queries</h3>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>📥 Import</h4>
+                    <p>Import data to local machine (creates a local copy)</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🔗 Direct Query</h4>
+                    <p>For huge datasets, keeps data at source level without burdening your software</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🏞️ Direct Lake</h4>
+                    <p>Newer technology combining benefits of both Import and DirectQuery modes</p>
+                </div>
+            </div>
+
+            <h3>Data Errors Resolution</h3>
+            <div class="card">
+                <ul>
+                    <li><strong>Query Optimization:</strong> Hardware being used by concurrent users</li>
+                    <li><strong>Timeout Errors:</strong> Indicates too much data being pulled</li>
+                    <li><strong>Couldn't Find File:</strong> Caused by change in file location</li>
+                    <li><strong>Couldn't Find Data:</strong> Power BI expects data in table format</li>
+                    <li><strong>Data Type Errors:</strong> Data fetched with mismatched datatypes</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="roles" class="section">
+            <h2>Data Roles</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <span class="badge">Business Analyst</span>
+                    <p>Works with stakeholders to understand business needs and identifies opportunities for data-driven solutions.</p>
+                </div>
+                <div class="grid-item">
+                    <span class="badge">Data Analyst</span>
+                    <p>Interprets data to identify trends, creates reports, and visualizations to support business decisions.</p>
+                </div>
+                <div class="grid-item">
+                    <span class="badge">Data Engineer</span>
+                    <p>Designs, builds, and maintains infrastructure to store, process, and retrieve large datasets.</p>
+                </div>
+                <div class="grid-item">
+                    <span class="badge">Data Scientist</span>
+                    <p>Explores complex datasets, develops predictive models, and creates data-driven solutions.</p>
+                </div>
+                <div class="grid-item">
+                    <span class="badge">Database Administrator</span>
+                    <p>Manages data storage, security, access controls, and performs data backups and recovery.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis-types" class="section">
+            <h2>Types of Analysis</h2>
+            
+            <div class="card">
+                <h3>Analysis vs Analytics</h3>
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <h4>Analysis</h4>
+                        <p>Breaking down data to understand <span class="highlight">what happened</span> in the past.</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Analytics</h4>
+                        <p>Using data and statistical methods to predict <span class="highlight">what may happen</span> in the future.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow">
+                <div class="workflow-item">
+                    <strong>Descriptive</strong><br>
+                    What happened?
+                </div>
+                <div class="workflow-item">
+                    <strong>Diagnostic</strong><br>
+                    Why did it happen?
+                </div>
+                <div class="workflow-item">
+                    <strong>Predictive</strong><br>
+                    What will happen?
+                </div>
+                <div class="workflow-item">
+                    <strong>Prescriptive</strong><br>
+                    What should be done?
+                </div>
+                <div class="workflow-item">
+                    <strong>Cognitive</strong><br>
+                    Learn from data
+                </div>
+            </div>
+
+            <h3>Tasks of Data Analyst</h3>
+            <div class="workflow">
+                <div class="workflow-item">Prepare</div>
+                <div class="workflow-item">Model</div>
+                <div class="workflow-item">Visualize</div>
+                <div class="workflow-item">Analyze</div>
+                <div class="workflow-item">Manage</div>
+            </div>
+        </section>
+
+        <section id="modeling" class="section">
+            <h2>Data Modeling</h2>
+            
+            <div class="comparison">
+                <div class="comparison-item">
+                    <div class="icon">📋</div>
+                    <h4>Dimensional Tables</h4>
+                    <ul>
+                        <li>Describes business entities</li>
+                        <li>Includes products, people</li>
+                        <li>Typically smaller in size</li>
+                        <li>Limited to groupable items</li>
+                        <li>Examples: Customer Table, Product Table</li>
+                    </ul>
+                </div>
+                <div class="comparison-item">
+                    <div class="icon">📊</div>
+                    <h4>Fact Tables</h4>
+                    <ul>
+                        <li>Stores observations or events</li>
+                        <li>Sales orders, stock balances, exchange rates</li>
+                        <li>Usually larger than dimension tables</li>
+                        <li>Stores numerous events</li>
+                        <li>Examples: Sales Table</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Schema Types</h3>
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <h4>⭐ Star Schema</h4>
+                        <p>Popular method where each table is defined as either dimension or fact table. Central fact table surrounded by dimension tables.</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>❄️ Snowflake Schema</h4>
+                        <p>Tables can be related to dimension tables also. More normalized structure with dimension tables having relationships to other dimension tables.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Relationship Types</h3>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>One-to-Many (1:M)</h4>
+                    <p>One student can read many subjects</p>
+                </div>
+                <div class="grid-item">
+                    <h4>Many-to-One (M:1)</h4>
+                    <p>Many subjects can be read by one student</p>
+                </div>
+                <div class="grid-item">
+                    <h4>One-to-One (1:1)</h4>
+                    <p>One student will have one registered number</p>
+                </div>
+                <div class="grid-item">
+                    <h4>Many-to-Many (M:M)</h4>
+                    <p>Many students can attend many sessions</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="dax" class="section">
+            <h2>DAX - Data Analysis Expressions</h2>
+            
+            <div class="card">
+                <h3>What is DAX?</h3>
+                <p>DAX is a <span class="highlight">set of library functions</span> provided by Microsoft to create measures, calculated columns, and calculated tables. It uses Excel-like syntax that's simple and intuitive.</p>
+            </div>
+
+            <div class="comparison">
+                <div class="comparison-item">
+                    <div class="icon">⚡</div>
+                    <h4>Measures</h4>
+                    <ul>
+                        <li>Aggregated values as per business requirement</li>
+                        <li>Created on demand</li>
+                        <li>Always created on Fact Tables</li>
+                        <li>Do not occupy space in dataset</li>
+                        <li>Types: Explicit, Implicit, Quick Measure</li>
+                    </ul>
+                </div>
+                <div class="comparison-item">
+                    <div class="icon">📊</div>
+                    <h4>Calculated Columns</h4>
+                    <ul>
+                        <li>Generate row-wise data</li>
+                        <li>Can be created on both table types</li>
+                        <li>Occupy space in dataset</li>
+                        <li>Affects performance</li>
+                        <li>Use sensibly</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Key DAX Functions Comparison</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Function</th>
+                        <th>Description</th>
+                        <th>Context Behavior</th>
+                        <th>Example Use Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ALL()</strong></td>
+                        <td>Removes all filters from specified column/table</td>
+                        <td>Ignores all filters applied in report/visuals</td>
+                        <td>Returns total sales, ignoring all filters</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ALLSELECTED()</strong></td>
+                        <td>Removes filters but keeps user selections</td>
+                        <td>Respects user selections in slicers/visuals</td>
+                        <td>Returns total based on user-selected values</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ALLEXCEPT()</strong></td>
+                        <td>Removes all filters except specified columns</td>
+                        <td>Keeps filters on specified columns only</td>
+                        <td>Returns total sales per region, ignoring other filters</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>DAX Syntax Elements</h3>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>Expressions</h4>
+                    <p>Combination of constants, operators, functions, and references</p>
+                    <div class="code">2 + 2 or SUM(sales[quantity])</div>
+                </div>
+                <div class="grid-item">
+                    <h4>Constants</h4>
+                    <p>Fixed values that don't change</p>
+                    <div class="code">42, "Hello", DATE(2020,12,31)</div>
+                </div>
+                <div class="grid-item">
+                    <h4>Operators</h4>
+                    <p>Symbols that perform operations</p>
+                    <div class="code">+, -, *, /, &, =, <>, IN</div>
+                </div>
+                <div class="grid-item">
+                    <h4>Functions</h4>
+                    <p>Predefined calculations</p>
+                    <div class="code">SUM, AVERAGE, IF, CALCULATE</div>
+                </div>
+            </div>
+
+            <h3>Example DAX Formulas</h3>
+            <div class="code">
+All = CALCULATE(SUM(Sales[Sales]),ALL(Region[Region]))
+
+Sales Rank by Region = 
+IF(
+    HASONEVALUE('Region'[Region]),
+    RANKX(
+        ALL('Region'[Region]),
+        CALCULATE(SUM('Sales'[Sales])),
+        ,
+        DESC,
+        DENSE
+    ),
+    BLANK()
+)
+
+PreviousMonth = 
+CALCULATE(SUM(Sales[Sales]),PREVIOUSMONTH('Date'[Date]))
+            </div>
+        </section>
+
+        <section id="reports" class="section">
+            <h2>Reports & Visualizations</h2>
+            
+            <div class="card">
+                <h3>Chart Types in Power BI</h3>
+                <div class="grid">
+                    <div class="grid-item">
+                        <span class="badge">Column Chart</span>
+                        <p>Vertical columns for comparing categorical data</p>
+                    </div>
+                    <div class="grid-item">
+                        <span class="badge">Bar Chart</span>
+                        <p>Horizontal bars for rankings and comparisons</p>
+                    </div>
+                    <div class="grid-item">
+                        <span class="badge">Line Chart</span>
+                        <p>Shows trends over time using lines</p>
+                    </div>
+                    <div class="grid-item">
+                        <span class="badge">Pie Chart</span>
+                        <p>Circular chart showing part-to-whole relationships</p>
+                    </div>
+                    <div class="grid-item">
+                        <span class="badge">Scatter Chart</span>
+                        <p>Shows relationships between two variables</p>
+                    </div>
+                    <div class="grid-item">
+                        <span class="badge">Waterfall Chart</span>
+                        <p>Shows how initial value is affected by changes</p>
+                    </div>
+                    <div class="grid-item">
+                        <span class="badge">Gauge Chart</span>
+                        <p>Displays progress toward goals/targets</p>
+                    </div>
+                    <div class="grid-item">
+                        <span class="badge">Tree Map</span>
+                        <p>Hierarchical data using nested rectangles</p>
+                    </div>
+                    <div class="grid-item">
+                        <span class="badge">Key Influencers</span>
+                        <p>Identifies most influential fields driving metrics</p>
+                    </div>
+                    <div class="grid-item">
+                        <span class="badge">Decomposition Tree</span>
+                        <p>Shows how metrics break down into factors</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Data Preview Features</h3>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>Column Quality</h4>
+                    <ul>
+                        <li>Valid (Check Errors)</li>
+                        <li>Errors</li>
+                        <li>Empty</li>
+                    </ul>
+                </div>
+                <div class="grid-item">
+                    <h4>Column Profile</h4>
+                    <ul>
+                        <li>Complete column statistics</li>
+                        <li>Count, min, max, null, empty</li>
+                        <li>Entire nuances of the data</li>
+                    </ul>
+                </div>
+                <div class="grid-item">
+                    <h4>Column Distribution</h4>
+                    <ul>
+                        <li>Distinct values (different values)</li>
+                        <li>Unique values (no duplication)</li>
+                        <li>Example: Apple, Mango, Orange, Mango, Kiwi</li>
+                        <li>Distinct: Apple, Mango, Orange, Kiwi</li>
+                        <li>Unique: Apple, Orange, Kiwi</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Data Transformation Operations</h3>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>📎 Append</h4>
+                    <p>When two or more tables have similar structure - data needs to be added at the end</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🔗 Merge</h4>
+                    <p>When two or more tables have different structure with one common column</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🔄 Unpivot/Pivot</h4>
+                    <p>Converting rows to columns (pivot) or columns to rows (unpivot) with aggregated values</p>
+                </div>
+                <div class="grid-item">
+                    <h4>⚡ Query Folding</h4>
+                    <p>Converts Power Query steps into native database queries for better performance</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="workspace" class="section">
+            <h2>Workspace & Security</h2>
+            
+            <div class="card">
+                <h3>Power BI Workspace</h3>
+                <p>Centralized repository to manage all Power BI assets including reports, semantic models, and dashboards. Created under cloud service for collaboration.</p>
+            </div>
+
+            <h3>Workspace Access Methods</h3>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>👤 Individual Sharing</h4>
+                    <p>Direct sharing with specific users</p>
+                </div>
+                <div class="grid-item">
+                    <h4>👥 Workspace Roles</h4>
+                    <p>Assign different permission levels to users</p>
+                </div>
+                <div class="grid-item">
+                    <h4>📱 Creating Apps</h4>
+                    <p>Package content for broader distribution</p>
+                </div>
+            </div>
+
+            <h3>Workspace Roles</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Permissions</th>
+                        <th>Capabilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge">Admin</span></td>
+                        <td>Full Control</td>
+                        <td>Update/delete workspace, manage users, manage apps</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge">Member</span></td>
+                        <td>High Access</td>
+                        <td>Add members, publish/unpublish apps, create/edit content</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge">Contributor</span></td>
+                        <td>Content Creation</td>
+                        <td>Publish, create, edit, delete content, schedule refreshes</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge">Viewer</span></td>
+                        <td>Read Only</td>
+                        <td>View and interact with workspace items</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="card">
+                <h3>🔒 Row Level Security (RLS)</h3>
+                <p>Provides security at the row level. Can be implemented as <span class="highlight">Static RLS</span> or <span class="highlight">Dynamic RLS</span>. Configure through Modeling Tab → Manage Role → New Role.</p>
+            </div>
+        </section>
+
+        <section id="power-query" class="section">
+            <h2>Power Query & Parameters</h2>
+            
+            <div class="card">
+                <h3>Power Query Parameters</h3>
+                <p>Parameters are like <span class="highlight">adjustable settings</span> that help you control your data without digging into technical details. They're handy for making quick updates and keeping data queries running smoothly.</p>
+            </div>
+
+            <h3>DAX Considerations & Limitations</h3>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>⚡ Performance</h4>
+                    <p>Complex formulas can impact performance. Use calculated columns for static values, measures for dynamic calculations.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>💾 Memory</h4>
+                    <p>DAX calculations consume memory. Be mindful of large datasets and avoid memory-intensive functions.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🔄 Dependencies</h4>
+                    <p>Understand calculation order and avoid circular dependencies.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🎯 Filter Context</h4>
+                    <p>CALCULATE function evaluates expressions in modified filter context. Be aware of filter propagation.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>📊 Data Types</h4>
+                    <p>DAX is type-sensitive. Ensure consistent data types in calculations.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🧪 Testing</h4>
+                    <p>Always validate formulas with sample data and test edge cases.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="certification" class="section">
+            <h2>Certification & Exam Info</h2>
+            
+            <div class="card">
+                <h3>Microsoft PL-300 Exam Details</h3>
+                <div class="grid">
+                    <div class="grid-item">
+                        <h4>⏱️ Duration</h4>
+                        <p>100 to 120 minutes</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>❓ Questions</h4>
+                        <p>45 to 60 multiple-choice questions</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>🎯 Passing Score</h4>
+                        <p>700 out of 1000 points</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>📋 Question Types</h4>
+                        <p>True/false, single correct answer, multiple correct answers</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Key Exam Topics</h3>
+                <div class="workflow">
+                    <div class="workflow-item">Data Preparation</div>
+                    <div class="workflow-item">Data Modeling</div>
+                    <div class="workflow-item">Data Visualization</div>
+                    <div class="workflow-item">Data Analysis</div>
+                    <div class="workflow-item">Deployment & Management</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="section">
+            <h2>Learning Resources</h2>
+            
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>📚 Official Microsoft Learning</h4>
+                    <ul>
+                        <li>PL-300 Study Guide</li>
+                        <li>Microsoft Certified: Power BI Data Analyst Associate</li>
+                        <li>Course PL-300T00-A Training</li>
+                        <li>Power BI Documentation</li>
+                    </ul>
+                </div>
+                <div class="grid-item">
+                    <h4>🎨 Design Resources</h4>
+                    <ul>
+                        <li>Agile Analytics Templates</li>
+                        <li>Enterprise DNA Showcase</li>
+                        <li>NovyPro Dashboard Gallery</li>
+                        <li>ZebraBI Templates</li>
+                    </ul>
+                </div>
+                <div class="grid-item">
+                    <h4>📖 Reference Materials</h4>
+                    <ul>
+                        <li>DAX Function Reference</li>
+                        <li>Power Query Documentation</li>
+                        <li>Data Modeling Best Practices</li>
+                        <li>Visualization Guidelines</li>
+                    </ul>
+                </div>
+                <div class="grid-item">
+                    <h4>💡 Practice Resources</h4>
+                    <ul>
+                        <li>Microsoft Learning GitHub</li>
+                        <li>Sample Datasets</li>
+                        <li>Practice Exercises</li>
+                        <li>Community Forums</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary" class="section">
+            <h2>Key Takeaways</h2>
+            
+            <div class="card">
+                <h3>🎯 Core Concepts</h3>
+                <p>Organizations generate massive amounts of data daily. The key is unlocking data's power to drive better business decisions and gain competitive edge through compelling data storytelling in reports.</p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Data Analysis Process</h3>
+                <p>Data Analysis is identifying, cleaning, transforming, and modeling data to discover meaningful information. It's critical for all organizations impacting customer sentiment, marketing, product research, and trend identification.</p>
+            </div>
+
+            <div class="card">
+                <h3>🔄 Power BI Workflow</h3>
+                <p>Power BI connects multiple data sources (datasets) → builds models with relationships → creates visualizations (reports) → publishes for sharing → becomes semantic models for enterprise use.</p>
+            </div>
+
+            <div class="workflow">
+                <div class="workflow-item">
+                    <strong>Connect</strong><br>
+                    Multiple Data Sources
+                </div>
+                <div class="workflow-item">
+                    <strong>Transform</strong><br>
+                    Clean & Shape Data
+                </div>
+                <div class="workflow-item">
+                    <strong>Model</strong><br>
+                    Create Relationships
+                </div>
+                <div class="workflow-item">
+                    <strong>Visualize</strong><br>
+                    Build Reports
+                </div>
+                <div class="workflow-item">
+                    <strong>Share</strong><br>
+                    Publish & Collaborate
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            <h3>Continue Your Power BI Journey</h3>
+            <p>
+                <a href="https://learn.microsoft.com/en-us/training/powerplatform/power-bi" target="_blank">Official Training</a> |
+                <a href="https://docs.microsoft.com/en-us/dax/" target="_blank">DAX Reference</a> |
+                <a href="https://community.powerbi.com/" target="_blank">Community</a> |
+                <a href="https://powerbi.microsoft.com/en-us/blog/" target="_blank">Blog</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
+                Master Power BI to transform your organization's data into actionable insights
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add progress animation on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollTop >= sectionTop - windowHeight / 2 && scrollTop < sectionTop + sectionHeight) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.card, .grid-item').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add click animation to badges
+        document.querySelectorAll('.badge').forEach(badge => {
+            badge.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
